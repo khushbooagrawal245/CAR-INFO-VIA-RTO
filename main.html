@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>RTO APP</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+<body>
+    <h1 style="font-size: 100px;">CAR-INFO</h1>
+    <div class="box">
+    <input type="text" id="inp">
+    <input type="Submit" value="Get Info" onclick="check()">
+ 	<pre><p id="out" style=" margin-left: 70px; font-size:25px;">OUTPUT</p></pre>
+    </div>
+    
+</body>
+<script>
+    function check(){
+        var i = document.getElementById("inp").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET","http://192.168.1.19/cgi-bin/new.py?x=" + i, true);
+        xhr.send();
+    
+
+    xhr.onload = function(){
+        var output = xhr.responseText;
+        document.getElementById("out").innerHTML = output;
+    }
+}
+</script>
+</html>
